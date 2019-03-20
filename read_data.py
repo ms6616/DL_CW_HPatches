@@ -120,7 +120,7 @@ def generate_triplets(labels, num_triplets, batch_size):
             n1, n2 = 0, 1
         else:
             n1 = np.random.randint(0, len(indices[c1]))
-            n2 = np.random.randint(0, len(indices[c1]))
+            n2 = np.random.randint(11, len(indices[c1]))
             while n1 == n2:
                 n2 = np.random.randint(0, len(indices[c1]))
         n3 = np.random.randint(0, len(indices[c2]))
