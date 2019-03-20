@@ -91,8 +91,6 @@ class hpatches_sequence_folder:
             self.N = im.shape[0]/32
             setattr(self, t, np.split(im, self.N))
 
-
-
 def generate_triplets(labels, num_triplets, batch_size):
     def create_indices(_labels):
         inds = dict()
@@ -117,7 +115,7 @@ def generate_triplets(labels, num_triplets, batch_size):
         already_idxs.add(c1)
         c2 = np.random.randint(0, n_classes)
         while c1 == c2:
-            c2 = np.random.randint(0, n_classes)
+            c2 = np.random.randint(c1-100, c1+100)     # c2 is random number != c1   -> make hard negative by making sure it's in the same image
         if len(indices[c1]) == 2:  # hack to speed up process
             n1, n2 = 0, 1
         else:
